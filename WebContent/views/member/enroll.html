@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+</head>
+<body>
+<script>
+function idCheck() {
+	var userId = document.getElementById("userId").value;
+	window.open("/views/member/idCheck.jsp?checkId="+userId,"_blank","width=500px, height =100px");
+	return false;
+}
+</script>
+<h1>회원 가입</h1>
+<center>
+<form action = "/enroll.do" method = "post">
+ID : <input type = "text" placeholder="ID 입력" name = "userId" id = "userId"/>
+<button onclick = "return idCheck();">Id 중복 확인 </button><br>
+<input type = "hidden" id = "checkFlag" value = "0"/>
+PW : <input type = "password" placeholder="PW 입력" name = "userPwd" id = "pw1"/><br>
+PW_re : <input type = "password" placeholder="PW 재확인" id = "pw2"/><br>
+NAME : <input type = "text" placeholder="이름 입력" name = "userName"/><br>
+AGE : <input type = "text" placeholder="나이 입력" name = "age"/><br>
+EMAIL : <input type = "email" placeholder="이메일 입력" name = "email"/><br>
+PHONE : <input type = "phone" placeholder="전화 입력" name = "phone"/><br>
+ADDRESS : <input type = "text" placeholder="주소 입력" name = "address"/><br>
+GENDER : <input type = "radio" name = "gender" checked value = "M"/>남
+		 <input type = "radio" name = "gender" value = "F"/>여<br>
+HOBBY : <input type = "text" placeholder="취미 입력 (구분자 ,)" name = "hobby"/><br>
+
+<input type = "submit" value = "회원가입"/>
+<input type = "reset" value = "취소"/>
+<button onclick = "return goBack()">뒤로가기</button>
+
+<script>
+	function goBack(){
+		history.go(-1);
+		return false;
+	}
+	
+	function check() {
+		var pw1 = document.getElementById('pw1').value;
+		var pw2 = document.getElementById('pw2').value;
+		
+		var checkFlag = document.getElementById('checkFlag').value;
+		
+		if(checkFlag == 0){
+			alert("ID 중복확인을 확인해주세요.");
+			return false;
+		}else if(pw1==pw2){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
+</script>
+</form>
+</center>
+</body>
+</html>
